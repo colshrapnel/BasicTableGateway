@@ -3,6 +3,7 @@ require 'init.php';
 require 'BasicTableGateway.php';
 require 'UserGateway.php';
 
+/****** SETUP ******/
 $sql = "create temporary table gw_users (
     id int primary key auto_increment, 
     email varchar(255),
@@ -16,6 +17,8 @@ $data = [
     'password' => 123,
     'name' => 'Fooster',
 ];
+
+/****** EXAMPLE BEGINS ******/
 
 $userGateway = new UserGateway($pdo);
 
