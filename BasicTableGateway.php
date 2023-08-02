@@ -67,7 +67,7 @@ abstract class BasicTableGateway
     {
         $diff = array_diff(array_keys($data), [$this->primary, ...$this->fields]);
         if ($diff) {
-            throw new \InvalidArgumentException("Unknown field(s): ". implode($diff));
+            throw new \InvalidArgumentException("Unknown field(s): ". implode(",", $diff));
         }
     }
     protected function makeFieldList($data)
@@ -85,6 +85,6 @@ abstract class BasicTableGateway
             $set .= ($set ? "," : "") . "`$key` = ?";
             $params[] = $value;
         }
-        return [$params,$set];
+        return [$params, $set];
     }
 }
