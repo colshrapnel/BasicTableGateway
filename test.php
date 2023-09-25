@@ -14,7 +14,7 @@ $pdo->query($sql);
 
 $data = [
     'email' => 'foo@bar.com',
-    'password' => 123,
+    'password' => password_hash('Curious Elk * 38', PASSWORD_DEFAULT),
     'name' => 'Fooster',
 ];
 
