@@ -20,28 +20,28 @@ $data = [
 
 /****** EXAMPLE BEGINS ******/
 
-$userGateway = new UserGateway($pdo);
+$userGW = new UserGateway($pdo);
 
-$id = $userGateway->create($data);
+$id = $userGW->create($data);
 echo "Create: $id",PHP_EOL;
 
-$user = $userGateway->read($id);
+$user = $userGW->read($id);
 echo "Read: ". json_encode($user),PHP_EOL;
 
-$userGateway->update(['name' => 'Wooster'], $id);
-$user = $userGateway->read($id);
+$userGW->update(['name' => 'Wooster'], $id);
+$user = $userGW->read($id);
 echo "Update:".json_encode($user),PHP_EOL;
 
-$users = $userGateway->listBySql("SELECT * from gw_users");
+$users = $userGW->listBySql("SELECT * from gw_users");
 echo "List: ". json_encode($users),PHP_EOL;
 
-$user = $userGateway->getByField("email", $data['email']);
+$user = $userGW->getByField("email", $data['email']);
 echo "Find by column: ".json_encode($user),PHP_EOL;
 
-$userGateway->delete($id);
-$user = $userGateway->read($id);
+$userGW->delete($id);
+$user = $userGW->read($id);
 echo "Delete: ".json_encode($user),PHP_EOL;
 
 // attempt to use a non-existent column;
-$user = $userGateway->getByField("; drop table users", $data['email']);
+$user = $userGW->getByField("; drop table users", $data['email']);
 
